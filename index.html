@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+                <section >
+                    <div >
+                        <span>帳號</span>
+                        <input type="text" v-model="account" placeholder="帳號"><br>
+                        <span>密碼</span>
+                        <input type="text" v-model="password" placeholder="密碼"><br>
+                        <button  v-on:click="addMessage">登入購物</button>
+                    </div>
+                </section>
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                            "account": this.account,
+                            "password": this.password,
+                },
+                // define methods under the `methods` object
+                methods: {
+                    addMessage: function (event) {
+                        let url = 'https://gentle-harbor-89766.herokuapp.com/messages';
+                        let sdpToken = 'sdpTest';
+                        let data = {
+                            "account": this.account,
+                            "password": this.password,
+                        };
+                        let headers = {
+                            "content-type": "application/x-www-form-urlencoded"
+                        };
+                        Vue.http.options.emulateJSON = true;
+                        alert('login');
+                        console.log(data);
+                        window.location = "https://shopping.friday.tw?sdpToken=" + sdpToken;
+                        /*this.$http.post(url, data, {"headers": headers})*/
+                            /*.then((response) => {*/
+                                /*[> 成功拿到資料，然後... <]*/
+                                /*console.log('success');*/
+                            /*}) .catch((response) => {*/
+                                /*[> 失敗，發生錯誤，然後...<]*/
+                                /*alert('資料傳輸有誤，請再試一次。');*/
+                            /*})*/
+                            /*.finally(() => {*/
+                                /*[> 不論成功失敗，都做些事 <]*/
+                            /*});*/
+                    }
+                },
+                created: function(){
+                    console.log('== created ==');
+                }
+            })
+        </script>
+    </body>
+</html>
