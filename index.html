@@ -40,7 +40,7 @@
                         Vue.http.options.emulateJSON = true;
                         alert('login');
                         console.log(data);
-                        window.location = "https://shopping.friday.tw?sdpToken=" + sdpToken;
+                        // login get token
                         /*this.$http.post(url, data, {"headers": headers})*/
                             /*.then((response) => {*/
                                 /*[> 成功拿到資料，然後... <]*/
@@ -52,7 +52,22 @@
                             /*.finally(() => {*/
                                 /*[> 不論成功失敗，都做些事 <]*/
                             /*});*/
-                    }
+                        // change token
+                        window.location = "https://shopping.friday.tw?sdpToken=" + sdpToken;
+                    },
+                      getProfile: function (event) {
+                        this.$http.get('https://dylan-basic.appspot.com')
+                            .then((response) => {
+                                /* 成功拿到資料，然後... */
+                                console.log(reponse);
+                            }) .catch((response) => {
+                                /* 失敗，發生錯誤，然後...*/
+                            })
+                            .finally(() => {
+                                /* 不論成功失敗，都做些事 */
+                            });
+                    },
+
                 },
                 created: function(){
                     console.log('== created ==');
