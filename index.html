@@ -56,10 +56,10 @@
                         window.location = "https://shopping.friday.tw?sdpToken=" + sdpToken;
                     },
                       getProfile: function (event) {
-                        this.$http.get('https://dylan-basic.appspot.com')
+                        this.$http.get('https://dylan-basic.appspot.com/user/login')
                             .then((response) => {
                                 /* 成功拿到資料，然後... */
-                                console.log(reponse);
+                                console.log(reponse.body);
                             }) .catch((response) => {
                                 /* 失敗，發生錯誤，然後...*/
                             })
